@@ -1,0 +1,145 @@
+html, body {
+  height: 100%;
+  overflow: hidden;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
+}
+
+.ui-loader{
+  display: none;
+}
+
+#site{
+  overflow: hidden;
+  
+  a:link,
+  a:visited{
+    color: #fff;
+    text-decoration: none;
+  }
+
+  font-family: 'HelveticaNeue';
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  
+  #background_container{
+    position: fixed;
+    top: 4vh;
+    bottom: 4vh;
+    width: 100%;
+
+    &.over{
+      z-index: 40;
+    }
+  }
+
+ .background_img{
+  display: block;
+  position: fixed;
+  top: 4vh;
+  bottom: 4vh;
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+  img{
+    max-height: 100%;
+    width: auto;
+    display: inline-block;
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+
+    -webkit-transition: transform ease 0.7s;
+            transition: transform ease 0.7s;
+
+    -webkit-transform-style: preserve-3d;
+       -moz-transform-style: preserve-3d;
+        -ms-transform-style: preserve-3d;
+         -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+
+  }
+  &.show{
+    z-index: -30;
+    img{
+      -webkit-transform: rotateY(0deg);
+      transform: rotateY(0deg);
+    }
+  }
+ }
+
+  .background_detect{
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 4vh;
+    height: 92vh;
+    z-index: 1000;
+
+    &:hover{
+      cursor:pointer;
+    }
+
+    /*&:hover + .over{
+      display: none;
+    }*/
+  }
+  .background_detect2{
+    display: none;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 1000;
+  }
+
+ h1{
+  font-family: 'HelveticaNeue';
+  position: fixed;
+  top: 50%;
+  left: 0;
+  right: 0;
+  display: block;
+  margin: auto;
+  z-index: 1;
+  /*font-size: 3.3rem;*/
+  /*font-size: 5.5vw;*/
+  line-height: 1.25em;
+  transform: translateY(-49%);
+  -webkit-transform: translateY(-49%);
+
+  -webkit-transition: z-index ease 0s;
+  transition: z-index ease 0s;
+  
+  &.over.hide{
+    display: none;
+  }
+
+  &.under{
+    z-index: -1;
+  }
+ } 
+}
+
+@media (max-width: 600px) {
+  #site{
+    .background_img{
+      /*height: 79vh;*/
+    }
+
+    .background_detect{
+      display: none;
+    }
+    .background_detect2{
+      display: block;
+    }
+  }
+  
+}
