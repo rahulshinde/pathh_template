@@ -9,9 +9,14 @@ $(document).ready( function(){
     root_size = '10.2vw';
   }
   $('html').css({ 'font-size': root_size });
-  $(window).resize(changeRootFontSize);
-  $(window).resize(backgroundDetectSetup);
+  $(window).resize(function(){
+    changeRootFontSize();
+    backgroundDetectSetup();
+    Site.setupSlideShow();
+  })
   $(window).on('click', Site.slideshowClick);
+
+  $(window).on('mousemove', Site.arrowChange);
 
   // $('.background_detect').on('mouseenter', function(){
   //   $('h1').addClass('under');
@@ -21,17 +26,17 @@ $(document).ready( function(){
   //   $('h1').removeClass('under');
   // });
 
-  $('.background_detect').on('click', function(){
-    nextSlide();
-    backgroundDetectSetup();
-  });
+  // $('.background_detect').on('click', function(){
+  //   nextSlide();
+  //   backgroundDetectSetup();
+  // });
 
-  $('.background_detect2').on('click', function(){
-    $('.over').toggleClass('hide');
-  }); 
+  // $('.background_detect2').on('click', function(){
+  //   $('.over').toggleClass('hide');
+  // }); 
 
-  $('.background_detect2').swipeleft(nextSlide);
-  $('.background_detect2').swiperight(prevSlide);
+  $('body').swipeleft(nextSlide);
+  $('body').swiperight(prevSlide);
 
   randomImageLoad();
   Site.set
@@ -57,18 +62,20 @@ randomImageLoad = function(){
 
   var logo_show = Site.logo[Site.logo_choice];
   $(logo_show).addClass('show');
-
-  setupSlideShow();
+  Site.slide_position = Site.logo_choice;
+  Site.setupSlideShow();
 }
 
-setupSlideShow = function(){
-  Site.slide_position = Site.logo_choice;
+Site.setupSlideShow = function(){
+  Site.full_screen_width  = $(window).width();
   Site.screen_width  = $(window).width() / 2;
 }
 
 Site.slideshowClick = function(e){
 
   if($(e.toElement).hasClass('click_ignore')){
+    return
+  } else if (Site.full_screen_width <= 600){
     return
   } else{
     var mouse_position = e.clientX;
@@ -81,6 +88,18 @@ Site.slideshowClick = function(e){
     nextSlide();
   } else {
     prevSlide();
+  }
+
+}
+
+Site.arrowChange = function(e){
+  var mouse_position = e.clientX;
+  if (mouse_position >= Site.screen_width){
+    $('body').removeClass('left')
+    $('body').addClass('right')
+  } else {
+    $('body').removeClass('right')
+    $('body').addClass('left')
   }
 
 }

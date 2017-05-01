@@ -14,6 +14,17 @@ html, body {
 }
 
 #site{
+  
+  &.right{
+    cursor: url(/img/arrow-right.png), auto;
+    -webkit-cursor: url(/img/arrow-right.png), auto;
+  }
+
+  &.left{
+    cursor: url(/img/arrow-left.png), auto;
+    -webkit-cursor: url(/img/arrow-left.png), auto;
+  }
+
   overflow: hidden;
   
   a:link,
@@ -93,14 +104,13 @@ html, body {
   }
   .background_detect2{
     display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000;
   }
 
- h1{
+  h1{
+    width: auto;
+  }
+
+ .over{
   font-family: 'HelveticaNeue';
   position: fixed;
   top: 50%;
@@ -114,16 +124,58 @@ html, body {
   line-height: 1.25em;
   transform: translateY(-49%);
   -webkit-transform: translateY(-49%);
-
-  -webkit-transition: z-index ease 0s;
-  transition: z-index ease 0s;
   
   &.over.hide{
     display: none;
   }
 
+
+
   &.under{
     z-index: -1;
+  }
+
+  /*mailchimp styling*/
+
+  ::-webkit-input-placeholder { 
+    color: #fff;
+  }
+  ::-moz-placeholder {
+    color: #fff;
+  }
+  :-ms-input-placeholder {
+    color: #fff;
+  }
+  :-moz-placeholder {
+    color: #fff;
+  }
+
+  input[type="email"]{
+    font-family: 'HelveticaNeue';
+    font-size: inherit;
+    padding-top: 0.2rem;
+    margin-bottom: 0.2rem;
+    width: 7rem;
+    text-align: center;
+    border: 2px solid white;
+  }
+
+  input:focus { 
+    border: 2px solid white;
+    outline: none;
+  }
+
+  input, select, textarea{
+    color: #fff;
+  }
+
+  #mce-EMAIL{
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  #mc-embedded-subscribe{
+    display: none;
   }
  } 
 }
@@ -134,11 +186,20 @@ html, body {
       /*height: 79vh;*/
     }
 
-    .background_detect{
+    /*.background_detect{
       display: none;
-    }
+    }*/
     .background_detect2{
       display: block;
+      position: fixed;
+      top: 0;
+      height: 50vh;
+      width: 100%;
+      z-index: 500;
+    }
+
+    input[type="email"]{
+      z-index: 1000;
     }
   }
   
