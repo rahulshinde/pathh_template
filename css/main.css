@@ -84,6 +84,12 @@ html, body {
   background-color: #000;
   color: #fff;
   text-align: center; }
+  #site.right {
+    cursor: url(/img/arrow-right.png), auto;
+    -webkit-cursor: url(/img/arrow-right.png), auto; }
+  #site.left {
+    cursor: url(/img/arrow-left.png), auto;
+    -webkit-cursor: url(/img/arrow-left.png), auto; }
   #site a:link,
   #site a:visited {
     color: #fff;
@@ -137,13 +143,10 @@ html, body {
     #site .background_detect:hover {
       cursor: pointer; }
   #site .background_detect2 {
-    display: none;
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    width: 100%;
-    z-index: 1000; }
+    display: none; }
   #site h1 {
+    width: auto; }
+  #site .over {
     font-family: 'HelveticaNeue';
     position: fixed;
     top: 50%;
@@ -157,19 +160,53 @@ html, body {
     line-height: 1.25em;
     transform: translateY(-49%);
     -webkit-transform: translateY(-49%);
-    -webkit-transition: z-index ease 0s;
-    transition: z-index ease 0s; }
-    #site h1.over.hide {
+    /*mailchimp styling*/ }
+    #site .over.over.hide {
       display: none; }
-    #site h1.under {
+    #site .over.under {
       z-index: -1; }
+    #site .over ::-webkit-input-placeholder {
+      color: #fff; }
+    #site .over ::-moz-placeholder {
+      color: #fff; }
+    #site .over :-ms-input-placeholder {
+      color: #fff; }
+    #site .over :-moz-placeholder {
+      color: #fff; }
+    #site .over input[type="email"] {
+      font-family: 'HelveticaNeue';
+      font-size: inherit;
+      padding-top: 0.2rem;
+      margin-bottom: 0.2rem;
+      width: 7rem;
+      text-align: center;
+      border: 2px solid white; }
+    #site .over input:focus {
+      border: 2px solid white;
+      outline: none; }
+    #site .over input, #site .over select, #site .over textarea {
+      color: #fff; }
+    #site .over #mce-EMAIL {
+      background-color: transparent;
+      box-shadow: none; }
+    #site .over #mc-embedded-subscribe {
+      display: none; }
 
 @media (max-width: 600px) {
-  #site .background_img {
-    /*height: 79vh;*/ }
-  #site .background_detect {
-    display: none; }
-  #site .background_detect2 {
-    display: block; } }
+  #site {
+    /*.background_detect{
+      display: none;
+    }*/ }
+    #site .background_img {
+      /*height: 79vh;*/ }
+    #site .background_detect2 {
+      display: block;
+      position: fixed;
+      top: 0;
+      height: 50vh;
+      width: 100%;
+      z-index: 500; }
+    #site input[type="email"] {
+      z-index: 1000; } }
 
 /*# sourceMappingURL=main.css.map */
